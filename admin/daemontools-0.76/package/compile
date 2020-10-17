@@ -23,6 +23,11 @@ echo 'Copying commands into ./command...'
 for i in `cat package/commands`
 do
   rm -f command/$i'{new}'
+  echo 'rm -f...'
   cp -p compile/$i command/$i'{new}'
+  echo 'cp -p...'
   mv -f command/$i'{new}' command/$i
+  echo 'mv -f...'
 done
+
+echo 'compile done...'
