@@ -2,9 +2,9 @@
 
 In this installation example, create a bin in your home directory, extract it there, and install it.
 
-`$ cd`
-`$ mkdir bin`
-`$ cd bin`
+`$ cd
+$ mkdir bin
+$ cd bin`
 
 `$ git clone https://github.com/take-i/termux-daemontools.git`
 `$ cd termux-daemontools/admin/daemontools-0.76/`
