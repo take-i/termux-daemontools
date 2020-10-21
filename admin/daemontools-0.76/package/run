@@ -43,10 +43,10 @@ fi
 echo 'Creating $PREFIX/service...'
 mkdir $PREFIX/service
 
-if test -r /etc/inittab
-then
-  $PREFIX/command/setlock /etc/inittab package/run.inittab
-else
-  $PREFIX/command/setlock /etc/rc.local package/run.rclocal
-fi
+# if test -r /etc/inittab
+# then
+#   $PREFIX/command/setlock /etc/inittab package/run.inittab
+# else
+#   $PREFIX/command/setlock /etc/rc.local package/run.rclocal
+# fi
 
