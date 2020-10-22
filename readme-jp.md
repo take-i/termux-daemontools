@@ -4,7 +4,8 @@ daemontools とは、デーモンを監視するツールのことで、qmail �
 * この為、run から動作させるプロセスは、 & を付けてバックグラウンドにしないこと。
 
 詳細は、オフィシャルサイトを参照。https://cr.yp.to/daemontools.html
-このリポジトリでは、Termuxでdaemontoolsを動作させるようにした修正しました。
+
+このリポジトリでは、Androidで動作するTermuxでdaemontoolsを動作させるようにした修正をしました。
 
 # インストール
 

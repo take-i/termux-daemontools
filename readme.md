@@ -5,7 +5,7 @@ daemontools are tools that monitor daemons, and are tools by qmail author D.J.B.
 
 For details, refer to the official website. https://cr.yp.to/daemontools.html
 
-In this repository, I fixed it so that daemontools works with Termux.
+In this repository, I fixed it so that daemontools works on Termux (Android).
 
 # Install
 
