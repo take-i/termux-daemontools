@@ -1,3 +1,11 @@
+# daemontoolsとは？
+daemontools とは、デーモンを監視するツールのことで、qmail の作者 D.J.B. によるツールの事。メリットは、daemontools によって監視させておけば、 自動的に再起動してくれます。注意事項は以下。
+* バックグラウンドになるデーモンは管理できない。
+* この為、run から動作させるプロセスは、 & を付けてバックグラウンドにしないこと。
+
+詳細は、オフィシャルサイトを参照。https://cr.yp.to/daemontools.html
+このリポジトリでは、Termuxでdaemontoolsを動作させるようにした修正しました。
+
 # インストール
 
 daemontoolsは、展開したソースディレクトリにコマンドがシンボリック・リンクされます。
@@ -139,3 +147,22 @@ $ unlink crond
 
 setuidgidなど、一般ユーザ（termuxをインストールしたユーザ）では動作しないと思います。また、すべてのコマンドをテストしていませんので、動作無保証です。
 
+|    | Command       | Overview                                    | Tested | Works as root | Works as user | 備考                                  |
+|----|---------------|---------------------------------------------|--------|---------------|---------------|-------------------------------------|
+| 1  | envdir        | 指定したDirの環境変数を読み込んでからコマンドを起動                 | No     |               |               |                                     |
+| 2  | envuidgid     | 指定したアカウントの uid と gidでコマンド起動                 | No     |               |               |                                     |
+| 3  | fghack        | バックグランドに移るのを防ぐ                              | No     |               |               |                                     |
+| 4  | multilog      | tai64n 形式のログを作成                             | No     |               |               |                                     |
+| 5  | pgrphack      | 別のプロセスグループでプログラムを実行                         | No     |               |               |                                     |
+| 6  | readproctitle | psにreadproctitleというエラーメッセージを出す              | No     |               |               |                                     |
+| 7  | setlock       | ファイルをロックして別のプログラムを起動                        | No     |               |               | 多重起動を防止するのに使える                      |
+| 8  | setuidgid     | 指定したアカウントの uid と gid で別のプログラムを起動            | Yes    | O             | X             | root以外では使えない仕様                      |
+| 9  | softlimit     | リソース制限をかけて別プログラムを起動                         | No     |               |               |                                     |
+| 10 | supervise     | サービスを開始させ、監視するプログラム。svscan により起動する          | Yes    | O             | O             |                                     |
+| 11 | svc           | supervise により監視されているサービスを制御                 | Yes    | O             | O             |                                     |
+| 12 | svok          | supervise が起動しているかを調べる                      | Yes    | O             | O             | `svok $PREFIX/service/test ; echo $?` |
+| 13 | svscan        | サービスの集まりを開始させ、監視する                          | Yes    | O             | O             |                                     |
+| 14 | svscanboot    | /serviceディレクトリでsvscanを開始し、readproctitleにパイプ | X      |               |               |                                     |
+| 15 | svstat        | supervise により監視されているサービスの状態を出力              | Yes    | O             | O             |                                     |
+| 16 | tai64n        | TAI64N 形式の正確なタイムスタンプをつける                    | No     |               |               |                                     |
+| 17 | tai64nlocal   | TAI64N 形式のタイムスタンプを人間が読める形式に変換               | No     |               |               |                                     |

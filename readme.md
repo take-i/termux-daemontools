@@ -1,3 +1,12 @@
+# What are daemontools?
+daemontools are tools that monitor daemons, and are tools by qmail author D.J.B. The advantage is that if you monitor it with daemontools, it will restart automatically. The notes are as follows.
+* You cannot manage background daemons.
+* For this reason, do not add & to the background of processes running from run.
+
+For details, refer to the official website. https://cr.yp.to/daemontools.html
+
+In this repository, I fixed it so that daemontools works with Termux.
+
 # Install
 
 In this installation example, create a bin in your home directory, extract it there, and install it.
@@ -138,3 +147,22 @@ $ unlink crond
 
 I don't think it will work for general users (users who have installed termux) such as setuidgid. Also, not all commands have been tested, so there is no guarantee of operation.
 
+|    | Command       | Overview                  | Tested | Works as root | Works as user | Memo             |
+|----|---------------|------------------------------------|--------|---------------|---------------|------------------|
+| 1  | envdir        | Start the command after reading the environment variables in the specified directory                 | No     |               |               |                                     |
+| 2  | envuidgid     | Start command with uid and gid of specified account                 | No     |               |               |                                     |
+| 3  | fghack        | Prevent moving to the background                              | No     |               |               |                                     |
+| 4  | multilog      | Create tai64n format log                             | No     |               |               |                                     |
+| 5  | pgrphack      | Run the program in another process group                         | No     |               |               |                                     |
+| 6  | readproctitle | I get the error message readproctitle in ps              | No     |               |               |                                     |
+| 7  | setlock       | Lock the file and launch another program                        | No     |               |               | Can be used to prevent multiple boot                      |
+| 8  | setuidgid     | Launch another program with the uid and gid of the specified account            | Yes    | O             | X             | Specifications that can only be used by root                      |
+| 9  | softlimit     | Start another program with resource restrictions                         | No     |               |               |                                     |
+| 10 | supervise     | A program that starts and monitors services. Start by svscan          | Yes    | O             | O             |                                     |
+| 11 | svc           | Control services monitored by supervise                 | Yes    | O             | O             |                                     |
+| 12 | svok          | Check if supervise is running                      | Yes    | O             | O             | `svok $PREFIX/service/test ; echo $?` |
+| 13 | svscan        | Start and monitor service gatherings                          | Yes    | O             | O             |                                     |
+| 14 | svscanboot    | Start svscan in the / service directory and pipe to readproctitle | X      |               |               |                                     |
+| 15 | svstat        | Output the status of services monitored by supervise              | Yes    | O             | O             |                                     |
+| 16 | tai64n        | Accurate time stamp in TAI64N format                    | No     |               |               |                                     |
+| 17 | tai64nlocal   | Convert TAI64N format timestamps to human readable format               | No     |               |               |                                     |
